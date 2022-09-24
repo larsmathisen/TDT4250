@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="slack" nsURI="slack" nsPrefix="slack">
+  <eClassifiers xsi:type="ecore:EClass" name="User">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="posts" upperBound="-1"
+        eType="#//Post" eOpposite="#//Post/author"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Post">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="thread" eType="#//Thread"
+        eOpposite="#//Thread/posts"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="author" lowerBound="1"
+        eType="#//User" eOpposite="#//User/posts"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contents" lowerBound="1"
+        upperBound="-1" eType="#//AbstractContent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reply" eType="#//Post"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Channel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="threads" upperBound="-1"
+        eType="#//Thread" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+        eType="#//User"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DirectMessage" eSuperTypes="#//Channel"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Thread">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="posts" lowerBound="1" upperBound="-1"
+        eType="#//Post" containment="true" eOpposite="#//Post/thread"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractContent" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TextContent" eSuperTypes="#//AbstractContent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Image Content" eSuperTypes="#//AbstractContent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imgLink" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttachmentContent" eSuperTypes="#//AbstractContent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attachmentLink" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
