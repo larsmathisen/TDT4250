@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/tdt4250.a1.model/src" modelPluginID="tdt4250.a1.model"
+    modelName="Slack" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>slack.ecore</foreignModel>
+  <genPackages prefix="Slack" disposableProviderFactory="true" ecorePackage="slack.ecore#/">
+    <genClasses ecoreClass="slack.ecore#//User">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute slack.ecore#//User/username"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//User/posts"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//User/groups"/>
+    </genClasses>
+    <genClasses ecoreClass="slack.ecore#//Post">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute slack.ecore#//Post/time"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference slack.ecore#//Post/thread"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//Post/author"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference slack.ecore#//Post/contents"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//Post/reply"/>
+    </genClasses>
+    <genClasses ecoreClass="slack.ecore#//Channel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference slack.ecore#//Channel/threads"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//Channel/members"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//Channel/usergroup"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute slack.ecore#//Channel/name"/>
+    </genClasses>
+    <genClasses ecoreClass="slack.ecore#//DirectMessage"/>
+    <genClasses ecoreClass="slack.ecore#//Thread">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference slack.ecore#//Thread/posts"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="slack.ecore#//AbstractContent"/>
+    <genClasses ecoreClass="slack.ecore#//TextContent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute slack.ecore#//TextContent/text"/>
+    </genClasses>
+    <genClasses ecoreClass="slack.ecore#//ImageContent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute slack.ecore#//ImageContent/imgLink"/>
+    </genClasses>
+    <genClasses ecoreClass="slack.ecore#//AttachmentContent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute slack.ecore#//AttachmentContent/attachmentLink"/>
+    </genClasses>
+    <genClasses ecoreClass="slack.ecore#//Workspace">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference slack.ecore#//Workspace/channels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference slack.ecore#//Workspace/users"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute slack.ecore#//Workspace/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference slack.ecore#//Workspace/groups"/>
+    </genClasses>
+    <genClasses ecoreClass="slack.ecore#//UserGroup">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//UserGroup/users"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute slack.ecore#//UserGroup/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

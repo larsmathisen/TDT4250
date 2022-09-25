@@ -26,10 +26,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="usergroup" eType="#//UserGroup"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DirectMessage" eSuperTypes="#//Channel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="members" lowerBound="1"
-        upperBound="9" eType="#//User"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DirectMessage" eSuperTypes="#//Channel"/>
   <eClassifiers xsi:type="ecore:EClass" name="Thread">
     <eStructuralFeatures xsi:type="ecore:EReference" name="posts" lowerBound="1" upperBound="-1"
         eType="#//Post" containment="true" eOpposite="#//Post/thread"/>
@@ -38,7 +35,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="TextContent" eSuperTypes="#//AbstractContent">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Image Content" eSuperTypes="#//AbstractContent">
+  <eClassifiers xsi:type="ecore:EClass" name="ImageContent" eSuperTypes="#//AbstractContent">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="imgLink" lowerBound="1"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
