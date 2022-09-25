@@ -11,6 +11,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute slack.ecore#//User/username"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//User/posts"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//User/groups"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//User/channels"/>
     </genClasses>
     <genClasses ecoreClass="slack.ecore#//Post">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference slack.ecore#//Post/thread"/>

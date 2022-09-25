@@ -41,11 +41,13 @@ public interface Channel extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Members</b></em>' reference list.
 	 * The list contents are of type {@link tdt4250.a1.slack.User}.
+	 * It is bidirectional and its opposite is '{@link tdt4250.a1.slack.User#getChannels <em>Channels</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Members</em>' reference list.
 	 * @see tdt4250.a1.slack.SlackPackage#getChannel_Members()
-	 * @model upper="1000"
+	 * @see tdt4250.a1.slack.User#getChannels
+	 * @model opposite="channels" upper="1000"
 	 * @generated
 	 */
 	EList<User> getMembers();

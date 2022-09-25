@@ -55,6 +55,7 @@ public class ThreadImpl extends MinimalEObjectImpl.Container implements tdt4250.
 	 * @ordered
 	 */
 	protected static final int ID_EDEFAULT = 0;
+
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->

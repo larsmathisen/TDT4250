@@ -94,13 +94,22 @@ public interface SlackPackage extends EPackage {
 	int USER__GROUPS = 2;
 
 	/**
+	 * The feature id for the '<em><b>Channels</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER__CHANNELS = 3;
+
+	/**
 	 * The number of structural features of the '<em>User</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USER_FEATURE_COUNT = 3;
+	int USER_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>User</em>' class.
@@ -652,6 +661,17 @@ public interface SlackPackage extends EPackage {
 	EReference getUser_Groups();
 
 	/**
+	 * Returns the meta object for the reference '{@link tdt4250.a1.slack.User#getChannels <em>Channels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Channels</em>'.
+	 * @see tdt4250.a1.slack.User#getChannels()
+	 * @see #getUser()
+	 * @generated
+	 */
+	EReference getUser_Channels();
+
+	/**
 	 * Returns the meta object for class '{@link tdt4250.a1.slack.Post <em>Post</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1027,6 +1047,14 @@ public interface SlackPackage extends EPackage {
 		 * @generated
 		 */
 		EReference USER__GROUPS = eINSTANCE.getUser_Groups();
+
+		/**
+		 * The meta object literal for the '<em><b>Channels</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference USER__CHANNELS = eINSTANCE.getUser_Channels();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.a1.slack.impl.PostImpl <em>Post</em>}' class.

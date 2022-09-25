@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import tdt4250.a1.slack.Channel;
@@ -129,7 +130,7 @@ public class ChannelImpl extends MinimalEObjectImpl.Container implements Channel
 	 */
 	public EList<User> getMembers() {
 		if (members == null) {
-			members = new EObjectResolvingEList<User>(User.class, this, SlackPackage.CHANNEL__MEMBERS);
+			members = new EObjectWithInverseResolvingEList<User>(User.class, this, SlackPackage.CHANNEL__MEMBERS, SlackPackage.USER__CHANNELS);
 		}
 		return members;
 	}
@@ -172,11 +173,28 @@ public class ChannelImpl extends MinimalEObjectImpl.Container implements Channel
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case SlackPackage.CHANNEL__MEMBERS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getMembers()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case SlackPackage.CHANNEL__THREADS:
 				return ((InternalEList<?>)getThreads()).basicRemove(otherEnd, msgs);
+			case SlackPackage.CHANNEL__MEMBERS:
+				return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import tdt4250.a1.slack.Channel;
 import tdt4250.a1.slack.Post;
 import tdt4250.a1.slack.SlackPackage;
 import tdt4250.a1.slack.User;
@@ -34,6 +35,7 @@ import tdt4250.a1.slack.UserGroup;
  *   <li>{@link tdt4250.a1.slack.impl.UserImpl#getUsername <em>Username</em>}</li>
  *   <li>{@link tdt4250.a1.slack.impl.UserImpl#getPosts <em>Posts</em>}</li>
  *   <li>{@link tdt4250.a1.slack.impl.UserImpl#getGroups <em>Groups</em>}</li>
+ *   <li>{@link tdt4250.a1.slack.impl.UserImpl#getChannels <em>Channels</em>}</li>
  * </ul>
  *
  * @generated
@@ -78,6 +80,16 @@ public class UserImpl extends MinimalEObjectImpl.Container implements User {
 	 * @ordered
 	 */
 	protected EList<UserGroup> groups;
+
+	/**
+	 * The cached value of the '{@link #getChannels() <em>Channels</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getChannels()
+	 * @generated
+	 * @ordered
+	 */
+	protected Channel channels;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,6 +160,66 @@ public class UserImpl extends MinimalEObjectImpl.Container implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Channel getChannels() {
+		if (channels != null && channels.eIsProxy()) {
+			InternalEObject oldChannels = (InternalEObject)channels;
+			channels = (Channel)eResolveProxy(oldChannels);
+			if (channels != oldChannels) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SlackPackage.USER__CHANNELS, oldChannels, channels));
+			}
+		}
+		return channels;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Channel basicGetChannels() {
+		return channels;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetChannels(Channel newChannels, NotificationChain msgs) {
+		Channel oldChannels = channels;
+		channels = newChannels;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SlackPackage.USER__CHANNELS, oldChannels, newChannels);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setChannels(Channel newChannels) {
+		if (newChannels != channels) {
+			NotificationChain msgs = null;
+			if (channels != null)
+				msgs = ((InternalEObject)channels).eInverseRemove(this, SlackPackage.CHANNEL__MEMBERS, Channel.class, msgs);
+			if (newChannels != null)
+				msgs = ((InternalEObject)newChannels).eInverseAdd(this, SlackPackage.CHANNEL__MEMBERS, Channel.class, msgs);
+			msgs = basicSetChannels(newChannels, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SlackPackage.USER__CHANNELS, newChannels, newChannels));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -156,6 +228,10 @@ public class UserImpl extends MinimalEObjectImpl.Container implements User {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPosts()).basicAdd(otherEnd, msgs);
 			case SlackPackage.USER__GROUPS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getGroups()).basicAdd(otherEnd, msgs);
+			case SlackPackage.USER__CHANNELS:
+				if (channels != null)
+					msgs = ((InternalEObject)channels).eInverseRemove(this, SlackPackage.CHANNEL__MEMBERS, Channel.class, msgs);
+				return basicSetChannels((Channel)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -172,6 +248,8 @@ public class UserImpl extends MinimalEObjectImpl.Container implements User {
 				return ((InternalEList<?>)getPosts()).basicRemove(otherEnd, msgs);
 			case SlackPackage.USER__GROUPS:
 				return ((InternalEList<?>)getGroups()).basicRemove(otherEnd, msgs);
+			case SlackPackage.USER__CHANNELS:
+				return basicSetChannels(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -190,6 +268,9 @@ public class UserImpl extends MinimalEObjectImpl.Container implements User {
 				return getPosts();
 			case SlackPackage.USER__GROUPS:
 				return getGroups();
+			case SlackPackage.USER__CHANNELS:
+				if (resolve) return getChannels();
+				return basicGetChannels();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -214,6 +295,9 @@ public class UserImpl extends MinimalEObjectImpl.Container implements User {
 				getGroups().clear();
 				getGroups().addAll((Collection<? extends UserGroup>)newValue);
 				return;
+			case SlackPackage.USER__CHANNELS:
+				setChannels((Channel)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -235,6 +319,9 @@ public class UserImpl extends MinimalEObjectImpl.Container implements User {
 			case SlackPackage.USER__GROUPS:
 				getGroups().clear();
 				return;
+			case SlackPackage.USER__CHANNELS:
+				setChannels((Channel)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -253,6 +340,8 @@ public class UserImpl extends MinimalEObjectImpl.Container implements User {
 				return posts != null && !posts.isEmpty();
 			case SlackPackage.USER__GROUPS:
 				return groups != null && !groups.isEmpty();
+			case SlackPackage.USER__CHANNELS:
+				return channels != null;
 		}
 		return super.eIsSet(featureID);
 	}

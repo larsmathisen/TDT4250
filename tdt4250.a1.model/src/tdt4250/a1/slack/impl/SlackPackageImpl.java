@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EValidator;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -21,6 +22,8 @@ import tdt4250.a1.slack.TextContent;
 import tdt4250.a1.slack.User;
 import tdt4250.a1.slack.UserGroup;
 import tdt4250.a1.slack.Workspace;
+
+import tdt4250.a1.slack.util.SlackValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -158,6 +161,15 @@ public class SlackPackageImpl extends EPackageImpl implements SlackPackage {
 		// Initialize created meta-data
 		theSlackPackage.initializePackageContents();
 
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theSlackPackage,
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return SlackValidator.INSTANCE;
+				 }
+			 });
+
 		// Mark meta-data to indicate it can't be changed
 		theSlackPackage.freeze();
 
@@ -200,6 +212,15 @@ public class SlackPackageImpl extends EPackageImpl implements SlackPackage {
 	 */
 	public EReference getUser_Groups() {
 		return (EReference)userEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUser_Channels() {
+		return (EReference)userEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -504,6 +525,7 @@ public class SlackPackageImpl extends EPackageImpl implements SlackPackage {
 		createEAttribute(userEClass, USER__USERNAME);
 		createEReference(userEClass, USER__POSTS);
 		createEReference(userEClass, USER__GROUPS);
+		createEReference(userEClass, USER__CHANNELS);
 
 		postEClass = createEClass(POST);
 		createEReference(postEClass, POST__THREAD);
@@ -584,6 +606,7 @@ public class SlackPackageImpl extends EPackageImpl implements SlackPackage {
 		initEAttribute(getUser_Username(), ecorePackage.getEString(), "username", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUser_Posts(), this.getPost(), this.getPost_Author(), "posts", null, 0, -1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUser_Groups(), this.getUserGroup(), this.getUserGroup_Users(), "groups", null, 0, -1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUser_Channels(), this.getChannel(), this.getChannel_Members(), "channels", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(postEClass, Post.class, "Post", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPost_Thread(), this.getThread(), this.getThread_Posts(), "thread", null, 0, 1, Post.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -594,7 +617,7 @@ public class SlackPackageImpl extends EPackageImpl implements SlackPackage {
 
 		initEClass(channelEClass, Channel.class, "Channel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getChannel_Threads(), this.getThread(), null, "threads", null, 0, -1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getChannel_Members(), this.getUser(), null, "members", null, 0, 1000, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChannel_Members(), this.getUser(), this.getUser_Channels(), "members", null, 0, 1000, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChannel_Usergroup(), this.getUserGroup(), null, "usergroup", null, 0, -1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getChannel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Channel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -627,6 +650,26 @@ public class SlackPackageImpl extends EPackageImpl implements SlackPackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation
+		  (userEClass,
+		   source,
+		   new String[] {
+			   "constraints", "nameCharacters"
+		   });
 	}
 
 } //SlackPackageImpl
