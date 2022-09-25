@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slack:Workspace
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:slack="slack"
+    xsi:schemaLocation="slack slack.ecore"
+    name="TDT4250">
+  <channels
+      usergroup="//@groups.2 //@groups.3"
+      name="Announcements">
+    <threads>
+      <posts
+          author="//@users.7">
+        <contents
+            xsi:type="slack:TextContent"
+            text="Hi, welcome to the TDT4250 course!"/>
+        <contents
+            xsi:type="slack:AttachmentContent">
+          <attachmentLink>blackboard.com/attachmentexample</attachmentLink>
+        </contents>
+      </posts>
+    </threads>
+  </channels>
+  <channels
+      usergroup="//@groups.0"
+      name="Group 1 Messages"/>
+  <channels
+      usergroup="//@groups.1"
+      name="Group 2 Messages"/>
+  <channels
+      xsi:type="slack:DirectMessage"
+      members="//@users.0 //@users.4"
+      name="Lars, Tim">
+    <threads>
+      <posts
+          author="//@users.4"
+          reply="1">
+        <contents
+            xsi:type="slack:TextContent"
+            text="Hi, would you like to join my group?"/>
+      </posts>
+      <posts
+          author="//@users.0"
+          id="1">
+        <contents
+            xsi:type="slack:TextContent"
+            text="Sorry, I already have a group."/>
+      </posts>
+    </threads>
+  </channels>
+  <users username="Lars"
+      posts="1"
+      groups="//@groups.0 //@groups.3"/>
+  <users username="Kay"
+      groups="//@groups.0 //@groups.3"/>
+  <users username="Tommy"
+      groups="//@groups.0 //@groups.3"/>
+  <users username="Valentin"
+      groups="//@groups.0 //@groups.3"/>
+  <users username="Tim"
+      posts="//@channels.3/@threads.0/@posts.0"
+      groups="//@groups.1 //@groups.3"/>
+  <users username="Tom"
+      groups="//@groups.1 //@groups.3"/>
+  <users username="Tina"
+      groups="//@groups.1 //@groups.3"/>
+  <users username="Leonardo"
+      posts="//@channels.0/@threads.0/@posts.0"
+      groups="//@groups.2"/>
+  <groups users="//@users.0 //@users.1 //@users.2 //@users.3"
+      name="Group 1"/>
+  <groups users="//@users.4 //@users.5 //@users.6"
+      name="Group 2"/>
+  <groups users="//@users.7"
+      name="Staff"/>
+  <groups users="//@users.0 //@users.1 //@users.2 //@users.3 //@users.4 //@users.5 //@users.6"
+      name="Students"/>
+</slack:Workspace>

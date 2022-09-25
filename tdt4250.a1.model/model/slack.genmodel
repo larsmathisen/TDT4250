@@ -5,18 +5,19 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>slack.ecore</foreignModel>
-  <genPackages prefix="Slack" disposableProviderFactory="true" ecorePackage="slack.ecore#/">
+  <genPackages prefix="Slack" basePackage="tdt4250.a1" disposableProviderFactory="true"
+      ecorePackage="slack.ecore#/">
     <genClasses ecoreClass="slack.ecore#//User">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute slack.ecore#//User/username"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//User/posts"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//User/groups"/>
     </genClasses>
     <genClasses ecoreClass="slack.ecore#//Post">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute slack.ecore#//Post/time"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference slack.ecore#//Post/thread"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//Post/author"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference slack.ecore#//Post/contents"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference slack.ecore#//Post/reply"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute slack.ecore#//Post/id"/>
     </genClasses>
     <genClasses ecoreClass="slack.ecore#//Channel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference slack.ecore#//Channel/threads"/>
@@ -27,6 +28,7 @@
     <genClasses ecoreClass="slack.ecore#//DirectMessage"/>
     <genClasses ecoreClass="slack.ecore#//Thread">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference slack.ecore#//Thread/posts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute slack.ecore#//Thread/id"/>
     </genClasses>
     <genClasses image="false" ecoreClass="slack.ecore#//AbstractContent"/>
     <genClasses ecoreClass="slack.ecore#//TextContent">
