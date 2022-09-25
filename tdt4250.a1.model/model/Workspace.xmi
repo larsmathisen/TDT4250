@@ -7,11 +7,11 @@
     xsi:schemaLocation="slack slack.ecore"
     name="TDT4250">
   <channels
-      usergroup="//@groups.2 //@groups.3"
+      usergroup="Staff Students"
       name="Announcements">
     <threads>
       <posts
-          author="//@users.7">
+          author="Leonardo">
         <contents
             xsi:type="slack:TextContent"
             text="Hi, welcome to the TDT4250 course!"/>
@@ -23,25 +23,38 @@
     </threads>
   </channels>
   <channels
-      usergroup="//@groups.0"
-      name="Group 1 Messages"/>
+      usergroup="Group 1"
+      name="Group 1 Messages">
+    <threads>
+      <posts
+          author="Lars">
+        <contents
+            xsi:type="slack:TextContent"
+            text="Hi, take a look at this model"/>
+        <contents
+            xsi:type="slack:ImageContent">
+          <imgLink>blackboard.com/imageurlexample</imgLink>
+        </contents>
+      </posts>
+    </threads>
+  </channels>
   <channels
-      usergroup="//@groups.1"
+      usergroup="Group 2"
       name="Group 2 Messages"/>
   <channels
       xsi:type="slack:DirectMessage"
-      members="//@users.0 //@users.4"
+      members="Lars Tim"
       name="Lars, Tim">
     <threads>
       <posts
-          author="//@users.4"
+          author="Tim"
           reply="1">
         <contents
             xsi:type="slack:TextContent"
             text="Hi, would you like to join my group?"/>
       </posts>
       <posts
-          author="//@users.0"
+          author="Lars"
           id="1">
         <contents
             xsi:type="slack:TextContent"
@@ -50,30 +63,30 @@
     </threads>
   </channels>
   <users username="Lars"
-      posts="1"
-      groups="//@groups.0 //@groups.3"/>
+      posts="1 //@channels.1/@threads.0/@posts.0"
+      groups="Group 1 Students"/>
   <users username="Kay"
-      groups="//@groups.0 //@groups.3"/>
+      groups="Group 1 Students"/>
   <users username="Tommy"
-      groups="//@groups.0 //@groups.3"/>
+      groups="Group 1 Students"/>
   <users username="Valentin"
-      groups="//@groups.0 //@groups.3"/>
+      groups="Group 1 Students"/>
   <users username="Tim"
       posts="//@channels.3/@threads.0/@posts.0"
-      groups="//@groups.1 //@groups.3"/>
+      groups="Group 2 Students"/>
   <users username="Tom"
-      groups="//@groups.1 //@groups.3"/>
+      groups="Group 2 Students"/>
   <users username="Tina"
-      groups="//@groups.1 //@groups.3"/>
+      groups="Group 2 Students"/>
   <users username="Leonardo"
       posts="//@channels.0/@threads.0/@posts.0"
-      groups="//@groups.2"/>
-  <groups users="//@users.0 //@users.1 //@users.2 //@users.3"
+      groups="Staff"/>
+  <groups users="Lars Kay Tommy Valentin"
       name="Group 1"/>
-  <groups users="//@users.4 //@users.5 //@users.6"
+  <groups users="Tim Tom Tina"
       name="Group 2"/>
-  <groups users="//@users.7"
+  <groups users="Leonardo"
       name="Staff"/>
-  <groups users="//@users.0 //@users.1 //@users.2 //@users.3 //@users.4 //@users.5 //@users.6"
+  <groups users="Lars Kay Tommy Valentin Tim Tom Tina"
       name="Students"/>
 </slack:Workspace>
