@@ -10,7 +10,7 @@
       <!-- @generated slack -->
       <package
             uri="slack"
-            class="tdt4250.a1.slack.SlackPackage"
+            class="slack.SlackPackage"
             genModel="model/slack.genmodel"/>
    </extension>
 

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slack:Workspace
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:slack="slack"
+    xsi:schemaLocation="slack slack.ecore">
+  <channels
+      members="//@users.0 //@users.3 //@users.4 //@users.5"
+      name="annual-planning">
+    <threads>
+      <replyPosts
+          author="//@users.0"
+          reply="1"
+          date="2022-10-01T09:23:00.000+0200">
+        <contents
+            xsi:type="slack:AttachmentContent">
+          <attachmentLink>drive.google.com/example/annualplanning</attachmentLink>
+        </contents>
+      </replyPosts>
+      <replyPosts
+          author="//@users.5"
+          id="1"
+          date="2022-10-01T09:24:00.000+0200">
+        <contents
+            xsi:type="slack:TextContent"
+            text="Marvelous! Let's remember to update this with the latest numbers."/>
+      </replyPosts>
+    </threads>
+  </channels>
+  <channels
+      members="//@users.0 //@users.1 //@users.2 //@users.4"
+      name="customer-newsletter">
+    <threads>
+      <replyPosts
+          author="//@users.2"
+          reply="1"
+          date="2022-10-01T09:35:00.000+0200">
+        <contents
+            xsi:type="slack:TextContent"
+            text="@Zoe Maxwell, could we bring on a freelance writer?"/>
+      </replyPosts>
+      <replyPosts
+          reply="2"
+          id="1"
+          date="2022-10-01T09:36:00.000+0200">
+        <contents
+            xsi:type="slack:TextContent"
+            text="Thanks for the invite, @Zoe Maxwell. Excited to get started."/>
+      </replyPosts>
+      <replyPosts
+          author="//@users.0"
+          id="2"
+          date="2022-10-01T09:36:00.000+0200">
+        <contents
+            xsi:type="slack:TextContent"
+            text="Sample text"/>
+      </replyPosts>
+    </threads>
+  </channels>
+  <channels
+      members="//@users.0 //@users.4"
+      name="billing-crossfunction">
+    <threads>
+      <replyPosts
+          author="//@users.4"
+          reply="1"
+          date="2022-10-01T09:26:00.000+0200">
+        <contents
+            xsi:type="slack:TextContent"
+            text="We expect that to be live on our site next week, development status here:"/>
+      </replyPosts>
+      <replyPosts
+          id="1"
+          date="2022-10-01T09:27:00.000+0200">
+        <contents
+            xsi:type="slack:TextContent"
+            text="We should keep their account owner updated as well."/>
+      </replyPosts>
+    </threads>
+  </channels>
+  <channels
+      members="//@users.0 //@users.2 //@users.3"
+      name="acme-beacon-collab"/>
+  <channels
+      members="//@users.0"
+      name="Zoe Maxwell (you)"
+      directMessage="true"/>
+  <channels
+      members="//@users.3 //@users.0"
+      name="Matt Brewer"
+      directMessage="true"/>
+  <channels
+      members="//@users.4 //@users.0"
+      name="Lisa Dawson"
+      directMessage="true"/>
+  <users username="Zoe Maxwell"
+      posts="//@channels.0/@threads.0/@replyPosts.0 2"
+      channels="//@channels.0 //@channels.1 //@channels.2 //@channels.3 //@channels.4 //@channels.5 //@channels.6"/>
+  <users username="Lee Hao"
+      channels="//@channels.1"
+      phoneNumber="+1 (882) 234-5579"
+      email="leehao@example.com"/>
+  <users username="Arcadio Buendia"
+      posts="//@channels.1/@threads.0/@replyPosts.0"
+      channels="//@channels.3 //@channels.1"/>
+  <users username="Matt Brewer"
+      channels="//@channels.0 //@channels.3 //@channels.5"/>
+  <users username="Lisa Dawson"
+      posts="//@channels.2/@threads.0/@replyPosts.0"
+      channels="//@channels.0 //@channels.1 //@channels.2 //@channels.6"/>
+  <users username="Jagdeep Das"
+      posts="1"
+      channels="//@channels.0"/>
+</slack:Workspace>

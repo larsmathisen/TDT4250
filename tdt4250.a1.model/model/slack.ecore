@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="slack" nsURI="slack" nsPrefix="slack">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="validationDelegates" value="http://www.eclipse.org/acceleo/query/1.0"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="User">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="nameCharacters"/>
@@ -8,14 +11,21 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="posts" upperBound="-1"
         eType="#//Post" eOpposite="#//Post/author"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
-        eType="#//UserGroup" eOpposite="#//UserGroup/users"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="channels" eType="#//Channel"
-        eOpposite="#//Channel/members"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="channels" upperBound="-1"
+        eType="#//Channel" eOpposite="#//Channel/members"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="phoneNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="email" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Post">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="replyInThread noSelfReply"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/acceleo/query/1.0">
+      <details key="replyInThread" value="self.reply.thread.id = self.thread.id"/>
+      <details key="noSelfReply" value="self.reply.id &lt;> self.id"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="thread" eType="#//Thread"
-        eOpposite="#//Thread/posts"/>
+        eOpposite="#//Thread/replyPosts"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="author" lowerBound="1"
         eType="#//User" eOpposite="#//User/posts"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contents" lowerBound="1"
@@ -23,22 +33,29 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="reply" eType="#//Post"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Channel">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="nameCharacters"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="threads" upperBound="-1"
-        eType="#//Thread" containment="true"/>
+        eType="#//Thread" containment="true" eOpposite="#//Thread/channel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="1000"
         eType="#//User" eOpposite="#//User/channels"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="usergroup" upperBound="-1"
-        eType="#//UserGroup"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="directMessage" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DirectMessage" eSuperTypes="#//Channel"/>
   <eClassifiers xsi:type="ecore:EClass" name="Thread">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="posts" lowerBound="1" upperBound="-1"
-        eType="#//Post" containment="true" eOpposite="#//Post/thread"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="originalPost" lowerBound="1"
+        eType="#//Post" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="replyPosts" upperBound="-1"
+        eType="#//Post" containment="true" eOpposite="#//Post/thread"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="channel" eType="#//Channel"
+        eOpposite="#//Channel/threads"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractContent" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="TextContent" eSuperTypes="#//AbstractContent">
@@ -58,12 +75,5 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="users" lowerBound="1" upperBound="100000"
         eType="#//User" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
-        eType="#//UserGroup" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UserGroup">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="users" upperBound="-1"
-        eType="#//User" eOpposite="#//User/groups"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

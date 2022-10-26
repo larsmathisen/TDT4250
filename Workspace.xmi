@@ -10,22 +10,22 @@
       members="//@users.5"
       name="annual-planning">
     <threads>
-      <originalPost
+      <posts
           author="//@users.0">
         <contents
             xsi:type="slack:AttachmentContent">
           <attachmentLink>drive.google.com/example/annualplanning</attachmentLink>
         </contents>
-      </originalPost>
+      </posts>
     </threads>
     <threads
         id="1">
-      <originalPost
+      <posts
           author="//@users.5">
         <contents
             xsi:type="slack:TextContent"
             text="Marvelous! Let's remember to update this with the latest numbers."/>
-      </originalPost>
+      </posts>
     </threads>
   </channels>
   <channels
@@ -35,69 +35,68 @@
       members="//@users.4"
       name="billing-crossfunction">
     <threads>
-      <originalPost
+      <posts
           author="//@users.4">
         <contents
             xsi:type="slack:TextContent"
             text="We expect that to be live on our site next week, development status here:"/>
-      </originalPost>
+      </posts>
     </threads>
     <threads
         id="1">
-      <originalPost
+      <posts
           author="//@users.0">
         <contents
             xsi:type="slack:TextContent"
             text="We should keep their account owner updated as well."/>
-      </originalPost>
+      </posts>
     </threads>
   </channels>
   <channels
       members="//@users.2"
       name="acme-beacon-collab">
     <threads>
-      <originalPost
+      <posts
           author="//@users.2">
         <contents
             xsi:type="slack:TextContent"
             text="@Zoe Maxwell, could we bring on a freelance writer?"/>
-      </originalPost>
+      </posts>
     </threads>
     <threads
         id="1">
-      <originalPost
+      <posts
           author="//@users.1">
         <contents
             xsi:type="slack:TextContent"
             text="Thanks for the invite, @Zoe Maxwell. Excited to get started."/>
-      </originalPost>
+      </posts>
     </threads>
     <threads
         id="3">
-      <originalPost
+      <posts
           author="//@users.0">
         <contents
             xsi:type="slack:TextContent"
             text="Filler text."/>
-      </originalPost>
+      </posts>
     </threads>
   </channels>
   <users username="Zoe Maxwell"
-      posts="//@channels.0/@threads.0/@originalPost //@channels.2/@threads.1/@originalPost //@channels.3/@threads.2/@originalPost"
+      posts="//@channels.0/@threads.0/@posts.0 //@channels.2/@threads.1/@posts.0 //@channels.3/@threads.2/@posts.0"
       channels="//@channels.1"/>
   <users username="Lee Hao"
-      posts="//@channels.3/@threads.1/@originalPost"
+      posts="//@channels.3/@threads.1/@posts.0"
       channels="//@channels.1"/>
   <users username="Arcadio Buendia"
-      posts="//@channels.3/@threads.0/@originalPost"
+      posts="//@channels.3/@threads.0/@posts.0"
       channels="//@channels.3"/>
   <users username="Matt Brewer"
-      posts="//@channels.1"/>
+      channels="//@channels.1"/>
   <users username="Lisa Dawson"
-      posts="//@channels.2/@threads.0/@originalPost"
+      posts="//@channels.2/@threads.0/@posts.0"
       channels="//@channels.2"/>
   <users username="Jagdeep Das"
-      posts="//@channels.0/@threads.1/@originalPost"
+      posts="//@channels.0/@threads.1/@posts.0"
       channels="//@channels.0"/>
 </slack:Workspace>
-
